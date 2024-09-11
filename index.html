@@ -7,30 +7,33 @@
 </head>
 <body>
     <script>
-        // Hardcoded URL for the POST request to the actual server
-        const targetURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Update this to the desired server URL
+        // Hardcoded URL for the backend
+        const targetURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Replace with your actual backend URL
 
         // Function to send a POST request with the message data
         function sendPostRequest() {
-            // Create a form to simulate the POST request
+            // Create a form element to simulate a POST request
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = targetURL;
 
-            // Optional: Add any parameters to the form (hidden inputs)
+            // Retrieve the message from the query parameter
+            const params = new URLSearchParams(window.location.search);
+            const message = params.get('message') || '';
+
+            // Add the message as a hidden input field
             const messageInput = document.createElement('input');
             messageInput.type = 'hidden';
-            messageInput.name = 'question'; // The field name should match the backend requirement
-            messageInput.value = new URLSearchParams(window.location.search).get('message') || ''; // Get the message from URL query params
-
+            messageInput.name = 'question';  // Use the expected field name for your backend
+            messageInput.value = message;
             form.appendChild(messageInput);
 
-            // Append the form to the body and submit it
+            // Submit the form to simulate the POST request
             document.body.appendChild(form);
             form.submit();
         }
 
-        // Trigger the POST request on page load
+        // Trigger the POST request when the page loads
         window.onload = sendPostRequest;
     </script>
 </body>
