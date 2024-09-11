@@ -6,45 +6,20 @@
     <title>URL Redirector</title>
 </head>
 <body>
-    <h1>Select a URL to Redirect</h1>
-    <form id="urlForm">
-        <label for="urlDropdown">Choose URL:</label>
-        <select id="urlDropdown">
-            <option value="">--Select a URL--</option>
-            <option value="https://sponge-regular-properly.ngrok-free.app">Example 1</option>
-            <option value="https://quiet-virtually-hog.ngrok-free.app/">Example 2</option>
-        </select>
-        <button type="submit">Save Selection</button>
-    </form>
+    <h1>Redirecting to a hardcoded URL...</h1>
 
     <p id="message"></p>
 
     <script>
-        // On page load, check if a URL is stored
+        // Hardcoded URL
+        const hardcodedURL = 'https://sponge-regular-properly.ngrok-free.app'; // Change this URL as needed
+        // const hardcodedURL = 'https://quiet-virtually-hog.ngrok-free.app/'; // Change this URL as needed
+
+        // On page load, redirect to the hardcoded URL
         window.onload = function() {
-            const storedURL = localStorage.getItem('selectedURL');
-            if (storedURL) {
-                document.getElementById('message').innerText = `Currently selected URL: ${storedURL}`;
-                window.location.href = storedURL;  // Redirect if there's a stored URL
-            }
+            document.getElementById('message').innerText = `Redirecting to: ${hardcodedURL}`;
+            window.location.href = hardcodedURL;  // Redirect to the hardcoded URL
         };
-
-        // Form submission event handler
-        document.getElementById('urlForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent form from submitting normally
-
-            const selectedURL = document.getElementById('urlDropdown').value;
-            if (selectedURL) {
-                // Store the selected URL in local storage
-                localStorage.setItem('selectedURL', selectedURL);
-                document.getElementById('message').innerText = `Selected URL saved: ${selectedURL}`;
-                
-                // Redirect to the selected URL
-                window.location.href = selectedURL;
-            } else {
-                alert('Please select a URL.');
-            }
-        });
     </script>
 </body>
 </html>
