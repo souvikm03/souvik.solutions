@@ -3,15 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Redirector</title>
+    <title>POST Redirector</title>
 </head>
 <body>
     <script>
-        // Hardcoded URL for immediate redirect
-        const targetURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Change this URL as needed
+        // Hardcoded URL for the POST request to the actual server
+        const targetURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Update this to the desired server URL
 
-        // Immediately redirect to the target URL
-        window.location.href = targetURL;
+        // Function to send a POST request with the message data
+        function sendPostRequest() {
+            // Create a form to simulate the POST request
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = targetURL;
+
+            // Optional: Add any parameters to the form (hidden inputs)
+            const messageInput = document.createElement('input');
+            messageInput.type = 'hidden';
+            messageInput.name = 'question'; // The field name should match the backend requirement
+            messageInput.value = new URLSearchParams(window.location.search).get('message') || ''; // Get the message from URL query params
+
+            form.appendChild(messageInput);
+
+            // Append the form to the body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        // Trigger the POST request on page load
+        window.onload = sendPostRequest;
     </script>
 </body>
 </html>
