@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,61 +6,12 @@
     <title>URL Redirector</title>
 </head>
 <body>
-    <h1>Redirecting to a hardcoded URL...</h1>
-
-    <p id="message"></p>
-
     <script>
-        // Hardcoded URL
-        const hardcodedURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Change this URL as needed
-        // const hardcodedURL = 'https://quiet-virtually-hog.ngrok-free.app/ask'; // Change this URL as needed
+        // Hardcoded URL for immediate redirect
+        const targetURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Change this URL as needed
 
-        // On page load, redirect to the hardcoded URL
-        window.onload = function() {
-            document.getElementById('message').innerText = `Redirecting to: ${hardcodedURL}`;
-            window.location.href = hardcodedURL;  // Redirect to the hardcoded URL
-        };
-    </script>
-</body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Endpoint Redirector</title>
-</head>
-<body>
-    <h1>Set the API URL for the Flutter app</h1>
-    
-    <label for="api-url">Enter New API URL:</label>
-    <input type="text" id="api-url" placeholder="https://example.com/ask">
-    <button onclick="saveUrl()">Save URL</button>
-
-    <p id="message"></p>
-
-    <script>
-        // Function to save URL in localStorage (or update a JSON config file if needed)
-        function saveUrl() {
-            const apiUrl = document.getElementById('api-url').value;
-            if (apiUrl) {
-                localStorage.setItem('apiUrl', apiUrl);
-                document.getElementById('message').innerText = `URL saved: ${apiUrl}`;
-            } else {
-                document.getElementById('message').innerText = 'Please enter a valid URL.';
-            }
-        }
-
-        // Endpoint to provide the current API URL for the Flutter app
-        window.onload = function() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('requestApiUrl')) {
-                const apiUrl = localStorage.getItem('apiUrl') || 'https://default-server.com/ask';
-                document.getElementById('message').innerText = `Returning saved API URL: ${apiUrl}`;
-                window.location.href = `${apiUrl}?${params}`;
-            }
-        };
+        // Immediately redirect to the target URL
+        window.location.href = targetURL;
     </script>
 </body>
 </html>
