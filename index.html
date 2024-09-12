@@ -6,35 +6,7 @@
     <title>POST Redirector</title>
 </head>
 <body>
-    <script>
-        // Hardcoded URL for the backend
-        const targetURL = 'https://sponge-regular-properly.ngrok-free.app/ask'; // Replace with your actual backend URL
-
-        // Function to send a POST request with the message data
-        function sendPostRequest() {
-            // Create a form element to simulate a POST request
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = targetURL;
-
-            // Retrieve the message from the query parameter
-            const params = new URLSearchParams(window.location.search);
-            const message = params.get('message') || '';
-
-            // Add the message as a hidden input field
-            const messageInput = document.createElement('input');
-            messageInput.type = 'hidden';
-            messageInput.name = 'question';  // Use the expected field name for your backend
-            messageInput.value = message;
-            form.appendChild(messageInput);
-
-            // Submit the form to simulate the POST request
-            document.body.appendChild(form);
-            form.submit();
-        }
-
-        // Trigger the POST request when the page loads
-        window.onload = sendPostRequest;
-    </script>
+    <!-- Set the URL as plain text -->
+    https://sponge-regular-properly.ngrok-free.app/ask
 </body>
 </html>
